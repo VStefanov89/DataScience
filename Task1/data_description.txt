@@ -1,0 +1,8 @@
+Columns description: 
+
+
+customer_id – customer identification number 
+order_number – order identification number 
+order_datetime – date at which the order has taken place 
+channel – channel of the order (value “E” for online purchase, “R” for retails) 
+gross_value – the gross value in US dollars of the order 
