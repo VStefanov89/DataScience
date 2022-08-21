@@ -1,7 +1,8 @@
 import sqlite_db
 
 import pandas as pd
-
+# We take all customers who has been stored in our database. These are the customers who has not gaps in their data
+# and had made orders in the last quarter
 
 def get_tables_name():
     sqlite_db.cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
@@ -13,7 +14,6 @@ def get_tables_name():
 
 
 def export_new_data(new_df, last_quarter, tables_names):
-
     for table in tables_names:
         query = sqlite_db.cursor.execute(f"""SELECT * FROM {table} """)  #
         cols = [column[0] for column in query.description]

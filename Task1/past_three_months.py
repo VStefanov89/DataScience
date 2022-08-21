@@ -5,7 +5,7 @@ import sqlite_db
 # In this file we will create new dataframe object. In it we will store na past 3 months info. When we check the data
 # we noticed that the last quarter is 2021Q2, so in that case, we are not able to perform any analysis because now is
 # 2022 August. For that reason we will assume that current time is the last quarter of the dataset, when we do that
-# we will able to make some analysis for the past 3 months which in our case will be last 4 months.
+# we will able to make some analysis for the past 3 months which in our case will be last 3 months.
 # We will store the data for the last three months and in the next steps will add the future data which is required
 # What we will do here is just filtering the test_sales file by last quarter, after that select each one of the
 # customers and for every order he made, count the total orders and total sum of gross value of these orders
