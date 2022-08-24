@@ -2,6 +2,8 @@
 import pandas as pd
 import sqlite_db
 
+
+
 # In this file we will create new dataframe object. In it we will store na past 3 months info. When we check the data
 # we noticed that the last quarter is 2021Q2, so in that case, we are not able to perform any analysis because now is
 # 2022 August. For that reason we will assume that current time is the last quarter of the dataset, when we do that
