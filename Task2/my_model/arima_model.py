@@ -1,12 +1,9 @@
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-from numpy import log
-import numpy as nm
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.graphics.tsaplots import plot_predict
-
 
 
 pd.set_option('display.expand_frame_repr', False)
@@ -86,7 +83,7 @@ plt.show()
 Creating our ARIMA models with values p, q, d, which we know from above
 
 """
-mymodel = ARIMA(housing_data.SalePrice, order = (0, 0, 1))
+mymodel = ARIMA(housing_data.SalePrice, order=(0, 0, 1))
 modelfit = mymodel.fit()
 print(modelfit.summary())
 
@@ -96,9 +93,9 @@ Our model is showing that the p values are 0, so our coefficients we could say a
 
 # Plotting Residual Errors
 myresiduals = pd.DataFrame(modelfit.resid)
-fig2, ax = plt.subplots(1,2)
-myresiduals.plot(title = "Residuals", ax = ax[0])
-myresiduals.plot(kind = 'kde', title = 'Density', ax = ax[1])
+fig2, ax = plt.subplots(1, 2)
+myresiduals.plot(title="Residuals", ax=ax[0])
+myresiduals.plot(kind='kde', title='Density', ax=ax[1])
 plt.savefig("Residuals Error")
 plt.show()
 
