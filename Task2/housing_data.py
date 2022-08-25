@@ -4,8 +4,8 @@ import numpy as np
 
 """
 First we need to check the data and get familiar with it. I will compare the sale prices with several columns to 
-check is there any interesting in these charts, I will do check for prices with LotArea, which is the size in square feet,
-prices with overall quality and with which year is sold the house. 
+check is there any interesting in these charts, I will do checking for prices with LotArea, which is the size in square feet,
+prices with overall quality. 
 """
 
 pd.set_option('display.expand_frame_repr', False)
@@ -22,12 +22,11 @@ def plotting(column):
     return plt.show()
 """
 Clearly we can see that there are some dependencies in these charts. Bigger home --> Bigger price, More quality of
-the home --> Bigger price, also we see that all homes are sold between 2006-2010, which is good, because the timeframe
-is not so big and sales price should depend more on the LotArea of the home. So for that reason i will
-make a multiple regression using all of these three columns as a independent variables. 
+the home --> Bigger price. So for that reason i will make a multiple regression using all of these columns as 
+an independent variables. 
 """
 
 print(plotting("LotArea"))
 print(plotting("OverallQual"))
-print(plotting("YrSold"))
+
 
