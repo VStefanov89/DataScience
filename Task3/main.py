@@ -28,12 +28,18 @@ print(chi_square_value, p_value)
 # continue with the analysis
 
 
-# Create factor analysis object and perform factor analysis
+# Create factor analysis object and perform factor analysis, I will do this with factor number equal to number of
+# columns of our database, then i will check exactly how many factor to have in my factor analysis
 fa = FactorAnalyzer()
 fa.fit(df, 11)
 # Check Eigenvalues
 ev, v = fa.get_eigenvalues()
 print(ev)
+# With these eigenvalues we can say that we need to use only 3 factors for our factor analysis.
+# But why should we choose the factors whose eigenvalues are greater than 1? The answer is very simple.
+# In a standard normal distribution with mean 0 and Standard deviation 1, the variance will be 1. Since we have standard
+# scaled the data the variance of a feature is 1. This is the reason for selecting factors whose eigenvalues(variance)
+# are greater than 1 i.e. the factors which explain more variance than a single observed variable.
 
 # Create scree plot using matplotlib
 plt.scatter(range(1,df.shape[1]+1),ev)
@@ -44,6 +50,7 @@ plt.ylabel('Eigenvalue')
 plt.grid()
 plt.show()
 
+# Creating factor analysis with 3 factors
 fa = FactorAnalyzer(n_factors=3,rotation='varimax')
 fa.fit(df)
 
@@ -57,14 +64,10 @@ print(pd.DataFrame(fa.loadings_,index=df.columns))
 
 # Based on this table we can see that:
 # - factor0 explains the common variance in people who rate the speed of their internet and people who experience a lot
-#  of internet outages. This factor we can call it 'Internet Quality'
+#  of internet outages. This factor we can call it 'Internet Quality'.
 # - factor1 explains the common variance in people who give rate about how satisfied are they with their TV servece, people
 # who rate how diversified is their TV and people who rate how is their TV signal reliability. This factor we can call it
 # 'TV Quality'
 # - factor2 explains the common variance in people who rate their quality of phone calls, people who rate their cell cover.
 # This factor we can call it 'Cell phone quality'
 
-
-print(pd.DataFrame(fa.get_factor_variance(),index=['Variance','Proportional Var','Cumulative Var']))
-
-print(pd.DataFrame(fa.get_communalities(),index=df.columns,columns=['Communalities']))
