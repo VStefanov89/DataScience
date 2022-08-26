@@ -3,7 +3,7 @@ from numpy import timedelta64
 import sqlite_db
 
 
-# Here we just make sure that our data for each customer in out database is corret. We do not want dataset with gaps
+# Here we just make sure that our data for each customer in our database is correct. We do not want dataset with gaps
 # for that reason i will remove these tables. If we have gaps in our data it is not possible to make correct forecast
 
 def check_gaps_in_database_tables(new_df):
@@ -23,7 +23,7 @@ def check_gaps_in_database_tables(new_df):
         customer_df.quarter_diff = customer_df.quarter_diff / timedelta64(1, 'D')
 
         if any(customer_df.quarter_diff > 92):
-            sqlite_db.cursor.execute(F"""DROP TABLE IF EXISTS Customer{customer_id}""")
+            sqlite_db.cursor.execute(f"""DROP TABLE IF EXISTS Customer{customer_id}""")
             print(f"Table name Customer{customer_id} was dropped")
             sqlite_db.connection.commit()
     return

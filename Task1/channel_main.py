@@ -2,11 +2,11 @@ import pandas as pd
 from test_sales import store_main_df
 import matplotlib.pyplot as plt
 
-
+# I will get the data from test_sales.csv and filter it by channel type. For each channel i will find quarterly info
+# and count the needed information from it and plot the data, to be able to see overall historical activity.
 pd.set_option('display.expand_frame_repr', False)
 
 df = store_main_df("test_sales.csv")
-
 df.quarter = df.quarter.astype("string")
 df.channel = df.channel.astype("string")
 
@@ -36,6 +36,7 @@ def get_info_by_channel(channel_type):
     return plt.show()
 
 
+print(get_info_by_channel("E"))
 print(get_info_by_channel("R"))
 
 
